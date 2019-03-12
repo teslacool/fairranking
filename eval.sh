@@ -7,8 +7,8 @@ id=$5
 bpetc=$6
 needtc=$7
 scripts=$SCRIPTS
-srclng=$7
-tgtlng=$8
+srclng=$8
+tgtlng=$9
 
 beamsize=5
 
