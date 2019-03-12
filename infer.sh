@@ -43,7 +43,8 @@ grep ^H $outputfile | cut -f3- > "$outputfile".sys
 
 #grep ^T $outputfile | cut -f2- > "$outputfile".ref
 
-grep ^S $outputfile | cut -f2- > "$outputfile".src
+#grep ^S $outputfile | cut -f2- > "$outputfile".src
+cp  $testdata "$outputfile".src
 
 if [ "$needdetc" = "true" ]
 then
@@ -53,8 +54,8 @@ then
         echo "set your mose dir"
         exit
     fi
-    ${scripts}/recaser/detruecase.perl < "$outputfile".src > "$outputfile".src.tmp
-    mv $outputfile.src.tmp "$outputfile".src
+#    ${scripts}/recaser/detruecase.perl < "$outputfile".src > "$outputfile".src.tmp
+#    mv $outputfile.src.tmp "$outputfile".src
     ${scripts}/recaser/detruecase.perl < "$outputfile".sys > "$outputfile".sys.tmp
     mv $outputfile.sys.tmp "$outputfile".sys
 fi
