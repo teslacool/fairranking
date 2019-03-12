@@ -22,12 +22,13 @@ bpetc2=/blob/v-jinhzh/data/bpetc/cold
 needtc2=true
 
 year=wmt18
+testdata=/blob/v-jinhzh/data/aftercleanbilingual
 
 echo "bash infer.sh $gpuid $ckt1 $datapath1 $needtc1
 bash infer.sh $gpuid $ckt2 $datapath2 $needtc2"
 
-bash infer.sh $gpuid $ckt1 $datapath1 $needtc1
-bash infer.sh $gpuid $ckt2 $datapath2 $needtc2
+bash infer.sh $gpuid $ckt1 $datapath1 $needtc1 $bpetc1 $testdata/test.${src}.tok $src
+bash infer.sh $gpuid $ckt2 $datapath2 $needtc2 $bpetc2 $testdata/test.${src}.tok $src
 
 echo "bash eval.sh $gpuid $datapath1 $ckt1 $ckt1 0 $bpetc1 $needtc1 $src $tgt
 bash eval.sh $gpuid $datapath2 $ckt2 $ckt1 1 $bpetc2 $needtc2 $src $tgt
