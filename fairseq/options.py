@@ -35,6 +35,14 @@ def get_generation_parser(interactive=False, default_task='translation'):
         add_interactive_args(parser)
     return parser
 
+def get_eval_lm_parser(default_task='language_modeling'):
+    parser = get_parser('Evaluate Language Model', default_task)
+    add_dataset_args(parser, gen=True, eval=True)
+    add_eval_lm_args(parser)
+    return parser
+
+def get_eval_mt_parser(default_task='language_modeling'):
+    return get_eval_lm_parser(default_task='translation')
 
 def get_interactive_generation_parser(default_task='translation'):
     return get_generation_parser(interactive=True, default_task=default_task)
@@ -42,7 +50,7 @@ def get_interactive_generation_parser(default_task='translation'):
 
 def get_eval_lm_parser(default_task='language_modeling'):
     parser = get_parser('Evaluate Language Model', default_task)
-    add_dataset_args(parser, gen=True)
+    add_dataset_args(parser, gen=True, eval=True)
     add_eval_lm_args(parser)
     return parser
 
@@ -159,7 +167,7 @@ def get_parser(desc, default_task='translation'):
     return parser
 
 
-def add_dataset_args(parser, train=False, gen=False):
+def add_dataset_args(parser, train=False, gen=False, eval=False):
     group = parser.add_argument_group('Dataset and data loading')
     # fmt: off
     group.add_argument('--num-workers', default=0, type=int, metavar='N',
@@ -187,8 +195,17 @@ def add_dataset_args(parser, train=False, gen=False):
                            help='shard generation over N shards')
         group.add_argument('--shard-id', default=0, type=int, metavar='ID',
                            help='id of the shard to generate (id < num_shards)')
-    # fmt: on
+    if eval:
+        group.add_argument('--source-file', default=None, type=str, metavar='FILE')
+        group.add_argument('--target-file', default=None, type=str, metavar='FILE')
+        group.add_argument('--score-file', default=None, type=str, metavar='FILE')
+        group.add_argument('--dup-src', default=1, type=int,
+                           help='duplicate the input for # times')
+        group.add_argument('--dup-tgt', default=1, type=int,
+                           help='duplicate the target for # times')
+        group.add_argument('--delimiter', default="\n", type=str)
     return group
+
 
 
 def add_distributed_training_args(parser):
