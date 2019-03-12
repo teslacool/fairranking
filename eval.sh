@@ -27,6 +27,7 @@ fi
 python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${srclng}.codes < ${srcsrc} >  ${srcckt}.output.src.$id
 python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${tgtlng}.codes < ${srcsys} >  ${srcckt}.output.sys.$id
 
+export PYTHONIOENCODING="UTF-8"
 python eval.py $DATA_PATH \
 --path $ckt \
 --source-file ${srcckt}.output.src.$id \

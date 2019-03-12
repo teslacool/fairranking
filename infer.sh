@@ -10,7 +10,7 @@ beamsize=5
 
 outputfile=${ckt}.output
 
-
+export PYTHONIOENCODING="UTF-8"
 python generate.py $datapath \
 --path $ckt \
 --batch-size 128 --beam $beamsize --nbest  $beamsize --remove-bpe > $outputfile
