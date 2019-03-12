@@ -23,7 +23,7 @@ grep ^T $outputfile | cut -f2- > "$outputfile".ref
 
 grep ^S $outputfile | cut -f2- > "$outputfile".src
 
-if [ "$needdebpe" = "true" ]
+if [ "$needdetc" = "true" ]
 then
     echo "need detruecase.."
     if [ ! -d $scripts ]
