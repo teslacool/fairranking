@@ -12,7 +12,7 @@ tgtlng=$9
 
 beamsize=5
 
-if [ $needtc = true ]
+if [ "$needtc" = "true" ]
 then
     echo "apply truecase"
     ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/model.tc.${srclng} < ${srcckt}.output.src > ${srcckt}.output.src.tmp
