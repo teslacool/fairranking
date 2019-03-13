@@ -27,7 +27,7 @@ fi
 echo "
 cat ${ckt}.testinput | python interactive.py  $datapath \
 --path $ckt --buffer-size 1024 \
---batch-size 128 --beam $beamsize --nbest  $beamsize --remove-bpe  > $outputfile
+--batch-size 128 --beam $beamsize --nbest  $beamsize --remove-bpe --lenpen $lenpen  > $outputfile
 "
 cat ${ckt}.testinput | python interactive.py  $datapath \
 --path $ckt --buffer-size 1024 \
