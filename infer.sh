@@ -6,7 +6,7 @@ needdetc=$4
 bpetc=$5
 testdata=$6
 srclng=$7
-
+lenpen=$8
 scripts=$SCRIPTS
 beamsize=5
 
@@ -31,7 +31,7 @@ cat ${ckt}.testinput | python interactive.py  $datapath \
 "
 cat ${ckt}.testinput | python interactive.py  $datapath \
 --path $ckt --buffer-size 1024 \
---batch-size 128 --beam $beamsize --nbest  $beamsize --remove-bpe  > $outputfile
+--batch-size 128 --beam $beamsize --nbest  $beamsize --remove-bpe  --lenpen $lenpen > $outputfile
 
 #python generate.py $datapath \
 #--path $ckt \

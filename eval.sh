@@ -12,17 +12,35 @@ tgtlng=$9
 
 beamsize=5
 
+
 if [ "$needtc" = "true" ]
 then
     echo "apply truecase"
-    ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/tc.${srclng} < ${srcckt}.output.src > ${srcckt}.output.src.tmp
-    srcsrc=${srcckt}.output.src.tmp
-    ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/tc.${tgtlng} < ${srcckt}.output.sys > ${srcckt}.output.sys.tmp
-    srcsys=${srcckt}.output.sys.tmp
+    cat ${srcckt}.output.src | \
+    perl ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/tc.${srclng} | \
+    python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${srclng}.codes >  ${srcckt}.output.src.$id
+
+    cat ${srcckt}.output.sys | \
+    perl ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/tc.${tgtlng} | \
+    python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${tgtlng}.codes >  ${srcckt}.output.sys.$id
 else
-    srcsrc=${srcckt}.output.src
-    srcsys=${srcckt}.output.sys
+    cat ${srcckt}.output.src | \
+    python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${srclng}.codes >  ${srcckt}.output.src.$id
+
+    cat ${srcckt}.output.sys | \
+    python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${tgtlng}.codes >  ${srcckt}.output.sys.$id
 fi
+#if [ "$needtc" = "true" ]
+#then
+#    echo "apply truecase"
+#    ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/tc.${srclng} < ${srcckt}.output.src > ${srcckt}.output.src.tmp
+#    srcsrc=${srcckt}.output.src.tmp
+#    ${scripts}/recaser/truecase.perl -model  ${bpetc}/model/tc.${tgtlng} < ${srcckt}.output.sys > ${srcckt}.output.sys.tmp
+#    srcsys=${srcckt}.output.sys.tmp
+#else
+#    srcsrc=${srcckt}.output.src
+#    srcsys=${srcckt}.output.sys
+#fi
 
 python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${srclng}.codes < ${srcsrc} >  ${srcckt}.output.src.$id
 python ${BPEROOT}/apply_bpe.py -c ${bpetc}/bpe/${tgtlng}.codes < ${srcsys} >  ${srcckt}.output.sys.$id

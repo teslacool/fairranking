@@ -61,7 +61,7 @@ score_12 = read_score(score_12)
 score_21 = read_score(score_21)
 score_22 = read_score(score_22)
 
-gamma = -0.4
+gamma = -0.
 
 max_bin = 20
 

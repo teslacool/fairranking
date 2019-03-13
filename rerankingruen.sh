@@ -1,27 +1,26 @@
 #!/usr/bin/env bash
-# bash reranking.sh 0 checkpoints/transformer/checkpoint1.pt data-bin/iwslt14.tokenized.de-en/ checkpoints/transformer/checkpoint2.pt data-bin/iwslt14.tokenized.de-en/
 gpuid=0
 HOME=/blob/v-jinhzh/code/fairranking
 cd $HOME
 
-src=en
-tgt=ru
+src=ru
+tgt=en
 bperoot=/blob/v-jinhzh/code/subword-nmt/subword_nmt
 export BPEROOT=$bperoot
 scripts=/blob/v-jinhzh/code/mosesdecoder/scripts
 export SCRIPTS=$scripts
 
-ckt1=/blob/v-jinhzh/code/fairseq_baseline/checkpoints/bt02_warm_share_en2ru/checkpoint30.pt
-datapath1=/blob/v-jinhzh/data/bt02/warmnmtdata01/en2ru
+ckt1=/blob/v-jinhzh/code/fairseq_baseline/checkpoints/bt02_warm_share_ru2en/checkpoint31.pt
+datapath1=/blob/v-jinhzh/data/bt02/warmnmtdata01/ru2en
 bpetc1=/blob/v-jinhzh/data/bpetc/share
 needtc1=false
 
-ckt2=/blob/v-jinhzh/code/fairseq_baseline/checkpoints/bt02_warm_cold_en2ru/checkpoint11.pt
-datapath2=/blob/v-jinhzh/data/bt02/warmnmtdata02/en2ru
+ckt2=/blob/v-jinhzh/code/fairseq_baseline/checkpoints/bt02_warm_cold_ru2en/checkpoint13.pt
+datapath2=/blob/v-jinhzh/data/bt02/warmnmtdata02/ru2en
 bpetc2=/blob/v-jinhzh/data/bpetc/cold
 needtc2=true
 
-lenpen=0.8
+lenpen=1.5
 year=wmt18
 testdata=/blob/v-jinhzh/data/aftercleanbilingual
 
