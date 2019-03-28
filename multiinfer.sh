@@ -23,6 +23,10 @@ bpedir=$bpetcdir/bpe
 echo ">>> bpedir $bpedir"
 
 outputfile=${ckt}.output
+if [ -f $outputfile ]
+then
+    rm $outputfile
+fi
 srcfile=/blob/v-jinhzh/data/wmttest/testdata/test.${year}.${srclng}.tok
 export PYTHONIOENCODING="UTF-8"
 
@@ -33,7 +37,7 @@ then
     $APPLY -model ${tcdir}/tc.${srclng} < $srcfile > input.tok
 else
     echo ">>> cp $srcfile input.tok"
-#    cp $srcfile input.tok
+    cp $srcfile input.tok
 fi
 BPEROOT=/blob/v-jinhzh/code/subword-nmt/subword_nmt
 echo ">>> python $BPEROOT/apply_bpe.py -c $bpedir/$srclng.codes < input.tok > input.tok.bpe"

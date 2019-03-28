@@ -74,11 +74,16 @@ for id in `seq 0 $stopcnt`
 do
     echo ">>> cat $srcfile >> input.tok "
     cat $srcfile >> input.tok
+    echo ">>> wc -l  ${ckts[$id]}.output.sys"
+    wc -l  ${ckts[$id]}.output.sys
     echo ">>> cat ${ckts[$id]}.output.sys >> output.sys"
     cat ${ckts[$id]}.output.sys >> output.sys
     echo ">>> rm ${ckts[$id]}.output.sys"
     rm ${ckts[$id]}.output.sys
 done
+
+echo "echo wc -l output.sys"
+wc -l output.sys
 
 for id in `seq 0 $stopcnt`
 do
@@ -86,6 +91,8 @@ do
     bash multieval.sh ${ckts[$id]} ${datapaths[$id]} ${bpetcs[$id]} $year $src  $lenpen $beamsize $tgt
     echo ">>> mv output.score output.score.${id}"
     mv output.score output.score.${id}
+    echo ">>> wc -l output.score.${id}"
+    wc -l output.score.${id}
     echo ">>> rm input.tok.bpe"
     rm input.tok.bpe
     echo ">>> rm output.sys.bpe"
@@ -103,3 +110,5 @@ do
     echo ">>> rm output.score.${id}"
     rm output.score.${id}
 done
+echo "wc -l output.score"
+wc -l output.score
