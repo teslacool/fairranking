@@ -56,6 +56,11 @@ else
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe"
     cat $outputsys | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe
+    if [ $bpetc == "r2l" ]
+    then
+        echo ">>> rm $outputsys"
+        rm $outputsys
+    fi
 fi
 export PYTHONIOENCODING="UTF-8"
 echo ">>> python eval.py $datapath \
