@@ -22,7 +22,14 @@ else
 fi
 bpedir=$bpetcdir/bpe
 echo ">>> bpedir $bpedir"
-
+outputsys="output.sys"
+if [ $bpetc == "r2l" ]
+then
+    echo ">>> python reversesentence.py output.sys"
+    python reversesentence.py output.sys
+    outputsys=output.sys.reversed
+fi
+echo ">>> outputsys $outputsys"
 if [ "$needtc" = "true" ]
 then
     echo ">>> apply truecase"
@@ -45,9 +52,9 @@ else
     cat input.tok | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${srclng}.codes >  input.tok.bpe
 
-    echo "cat output.sys | \
+    echo "cat $outputsys | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe"
-    cat output.sys | \
+    cat $outputsys | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe
 fi
 export PYTHONIOENCODING="UTF-8"

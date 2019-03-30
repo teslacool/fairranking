@@ -56,6 +56,14 @@ grep ^H $outputfile | cut -f3- > $outputfile.sys
 echo ">>> rm $outputfile"
 rm $outputfile
 
+if [ $bpetc == "r2l" ]
+then
+    echo ">>> python reversesentence.py $outputfile.sys"
+    python reversesentence.py $outputfile.sys
+    echo ">>> mv $outputfile.sys.reversed $outputfile.sys"
+    mv $outputfile.sys.reversed $outputfile.sys
+fi
+
 if [ "$needdetc" = "true" ]
 then
     echo ">>> need detruecase.."
