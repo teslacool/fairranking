@@ -22,6 +22,7 @@ num = args.num
 isepoch = args.epoch
 cmd = 'bash testyear.sh {} {} {} {}'.format(pair, year, bpetc, dictdir)
 cktdir = args.cktdir
+assert os.path.isdir(cktdir)
 lenpen =  args.l
 beamsize = args.b
 r2l = '--r2l' if args.r2l else ''
@@ -51,4 +52,4 @@ print(ckts)
 for ckt in ckts:
     newcmd = finalcmd.format(cmd=cmd, cktpath = ckt, beamsize=beamsize, lenpen=lenpen, r2l=r2l)
     print(newcmd)
-    # os.system(newcmd)
+    os.system(newcmd)
