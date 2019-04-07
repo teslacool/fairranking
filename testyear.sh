@@ -17,7 +17,7 @@ echo ">>> year $year"
 shift
 
 bpetc=$1
-if [ "bpetc" == 'r2l' ]
+if [ "$bpetc" == 'r2l' ]
 then
     r2l=true
 else
