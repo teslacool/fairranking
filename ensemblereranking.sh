@@ -136,6 +136,3 @@ echo ">>> perl ../mosesdecoder/scripts/tokenizer/detokenizer.perl -l $tgt < outp
 perl ../mosesdecoder/scripts/tokenizer/detokenizer.perl -l $tgt < output.tok > output.tok.detok
 echo ">>> cat output.tok.detok | ../sockeye/sockeye_contrib/sacrebleu/sacrebleu.py -t wmt${year:2:2} -l ${src}-${tgt}"
  cat output.tok.detok | ../sockeye/sockeye_contrib/sacrebleu/sacrebleu.py -t wmt${year:2:2} -l ${src}-${tgt}
-rm input.tok
-rm output.sys
-rm output.score
