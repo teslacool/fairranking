@@ -37,6 +37,7 @@ score = read_score(score)
 cktnum = score.shape[0] / lines_id.shape[0]
 cktnum = int(cktnum)
 beamsize = int(beamsize)
+encktnum = int(encktnum)
 score = score.reshape(cktnum, -1)
 score = np.sum(score, axis=0)
 lines_id = np.transpose(lines_id.reshape(encktnum, -1)).reshape(-1, beamsize * encktnum )

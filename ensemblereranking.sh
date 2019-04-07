@@ -74,7 +74,7 @@ for id in `seq 0 $enstopcnt`
 do
     echo ">>> bash enmultiinfer.sh ${enckts[$id]} ${endatapaths[$id]} ${enbpetcs[$id]} $year $src  $lenpen $beamsize ${enbszs[$id]} "
     bash enmultiinfer.sh ${enckts[$id]} ${endatapaths[$id]} ${enbpetcs[$id]} $year $src  $lenpen $beamsize ${enbszs[$id]}
-    echo ">>> ensembleoutput ensembleoutput.$id"
+    echo ">>> ensembleoutput.sys ensembleoutput.sys.$id"
     mv ensembleoutput.sys ensembleoutput.sys.$id
 done
 if [ -f input.tok ]

@@ -47,12 +47,12 @@ then
     perl ${scripts}/recaser/truecase.perl -model  ${bpetcdir}/model/tc.${tgtlng} | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe
 else
-    echo "cat input.tok | \
+    echo ">>> cat input.tok | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${srclng}.codes >  input.tok.bpe"
     cat input.tok | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${srclng}.codes >  input.tok.bpe
 
-    echo "cat $outputsys | \
+    echo ">>> cat $outputsys | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe"
     cat $outputsys | \
     python ${BPEROOT}/apply_bpe.py -c ${bpetcdir}/bpe/${tgtlng}.codes >  output.sys.bpe
