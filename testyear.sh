@@ -17,6 +17,12 @@ echo ">>> year $year"
 shift
 
 bpetc=$1
+if [ "bpetc" == 'r2l' ]
+then
+    r2l=true
+else
+    r2l=false
+fi
 echo ">>> bpetc $bpetc"
 shift
 bpetc=/blob/v-jinhzh/data/bpetc/$bpetc
@@ -58,7 +64,7 @@ python $BPEROOT/apply_bpe.py -c $bpedir/$src.codes < input.tok > input.tok.bpe
 
 beamsize=5
 lenpen=1
-r2l=false
+#r2l=false
 bsz=128
 while [[ $# > 0 ]]
 do
