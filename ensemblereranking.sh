@@ -46,7 +46,7 @@ shift
 echo ">>> enckt ${enckts[$ensembleid]} endatapath ${endatapaths[$ensembleid]} enbpetc ${enbpetcs[$ensembleid]} enbsz  ${enbszs[$ensembleid]}"
 ensembleid=$[ensembleid+1]
 done
-
+shift
 tmp=$#
 tmp=$[tmp%3]
 if [ $tmp != 0 ]
