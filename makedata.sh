@@ -15,10 +15,11 @@ tgt=${pair:3:2}
 echo ">>> srclng $src"
 echo ">>> tgtlng $tgt"
 shift
-tgtdir=$textdir/$pair
-mkdir -p $tgtdir
+
 
 bpetc=$1
+tgtdir=$textdir/${pair}_$bpetc
+mkdir -p $tgtdir
 if [ "$bpetc" == 'r2l' ]
 then
     r2l=true
@@ -99,10 +100,10 @@ fi
 echo ">>> r2l $r2l"
 if [ $r2l == true ]
 then
-    echo "python reversesentence.py ${srcfile}.tc"
-    python reversesentence.py ${srcfile}.tc
-    echo "mv ${srcfile}.tc.reversed ${srcfile}.tc"
-    mv ${srcfile}.tc.reversed ${srcfile}.tc
+#    echo "python reversesentence.py ${srcfile}.tc"
+#    python reversesentence.py ${srcfile}.tc
+#    echo "mv ${srcfile}.tc.reversed ${srcfile}.tc"
+#    mv ${srcfile}.tc.reversed ${srcfile}.tc
     echo "python reversesentence.py ${tgtfile}.tc"
     python reversesentence.py ${tgtfile}.tc
     echo "mv ${tgtfile}.tc.reversed ${tgtfile}.tc"
