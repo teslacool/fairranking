@@ -88,7 +88,7 @@ cktpath=$1
 echo ">>> cktpath $cktpath"
 shift
 
-srcfile=/blob/v-jinhzh/data/wmttest/testdata/test.${year}.${src}.tok
+srcfile=/blob/v-jinhzh/data/wmttest/testdata/test.${year}.${src}.tok.all
 SCRIPTS=/blob/v-jinhzh/code/mosesdecoder/scripts
 APPLY=$SCRIPTS/recaser/truecase.perl
 echo ">>> srcfile ${srcfile}"
@@ -174,6 +174,5 @@ fi
 
 echo ">>> perl ../mosesdecoder/scripts/tokenizer/detokenizer.perl -l $tgt < output.tok > output.tok.detok"
 perl ../mosesdecoder/scripts/tokenizer/detokenizer.perl -l $tgt < output.tok > output.tok.detok
-echo ">>> cat output.tok.detok | ../sockeye/sockeye_contrib/sacrebleu/sacrebleu.py /blob/v-jinhzh/data/wmttest/testdata/${src}${tgt}.${tgt}"
-cat output.tok.detok | ../sockeye/sockeye_contrib/sacrebleu/sacrebleu.py /blob/v-jinhzh/data/wmttest/testdata/${src}${tgt}.${tgt}
+wc -l output.tok.detok
 
