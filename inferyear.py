@@ -4,15 +4,16 @@ import os
 import re
 parser = argparse.ArgumentParser()
 parser.add_argument('pair', type=str)
-parser.add_argument('year', type=int)
+# parser.add_argument('year', type=int)
 parser.add_argument('bpetc', type=str)
 parser.add_argument('cktdir', type=str)
+parser.add_argument('--epoch',action='store_true' )
 args = parser.parse_args()
 pair = args.pair
-year = args.year
+# year = args.year
 bpetc = args.bpetc
-isepoch = True
-cmd = 'bash inferyear.sh {} {} {} '.format(pair, year, bpetc, )
+isepoch = args.epoch
+cmd = 'bash inferyear.sh {}  {} '.format(pair,  bpetc, )
 cktdir = args.cktdir
 assert os.path.isdir(cktdir)
 

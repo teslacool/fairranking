@@ -12,9 +12,9 @@ echo ">>> srclng $src"
 echo ">>> tgtlng $tgt"
 shift
 
-year=$1
+year=2019
 echo ">>> year $year"
-shift
+#shift
 
 bpetc=$1
 if [ "$bpetc" == 'r2l' ]
@@ -108,11 +108,11 @@ beamsize=5
 lenpen=1
 if [ $pair == "en2ru" ]
 then
-    beamsize=10
-    lenpen=0.4
+    beamsize=5
+    lenpen=2
 else
     beamsize=5
-    lenpen=1.5
+    lenpen=0.5
 fi
 #r2l=false
 bsz=128
