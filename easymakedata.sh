@@ -14,7 +14,7 @@ tgt=${pair:3:2}
 echo ">>> srclng $src"
 echo ">>> tgtlng $tgt"
 shift
-bash
+
 
 bpetc=$1
 tgtdir=$textdir/${pair}_$bpetc
@@ -53,6 +53,12 @@ then
         "r2l")
         dictdir=/blob/v-jinhzh/data/bt02/coldnmtdata02/ru2en
         ;;
+        "share")
+        dictdir=/blob/v-jinhzh/data/bt02/warmnmtdata01/ru2en
+        ;;
+        "all")
+        dictdir=/blob/v-jinhzh/data/bt02/warmnmtdata03/ru2en
+        ;;
         *)
         echo "unknown bpetc"
         exit
@@ -68,6 +74,12 @@ else
         ;;
         "r2l")
         dictdir=/blob/v-jinhzh/data/bt02/coldnmtdata09/en2ru
+        ;;
+        "share")
+        dictdir=/blob/v-jinhzh/data/bt02/warmnmtdata01/en2ru
+        ;;
+        "all")
+        dictdir=/blob/v-jinhzh/data/bt02/warmnmtdata03/en2ru
         ;;
         *)
         echo "unknown bpetc"
