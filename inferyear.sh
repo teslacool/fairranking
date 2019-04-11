@@ -77,6 +77,12 @@ else
         "r2l")
         dictdir=/blob/v-jinhzh/data/bt02/coldnmtdata09/en2ru
         ;;
+        "share")
+        dictdir=/blob/v-jinhzh/data/bt02/warmnmtdata01/en2ru
+        ;;
+        "all")
+        dictdir=/blob/v-jinhzh/data/bt02/warmnmtdata03/en2ru
+        ;;
         *)
         echo "unknown bpetc"
         exit

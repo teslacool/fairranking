@@ -132,6 +132,7 @@ done
 echo "wc -l output.score"
 wc -l output.score
 python encal.py $beamsize $ensembleid
+echo ">>> python threecal.py $beamsize $ensembleid $tgt"
 echo ">>> perl ../mosesdecoder/scripts/tokenizer/detokenizer.perl -l $tgt < output.tok > output.tok.detok"
 perl ../mosesdecoder/scripts/tokenizer/detokenizer.perl -l $tgt < output.tok > output.tok.detok
 echo ">>> cat output.tok.detok | ../sockeye/sockeye_contrib/sacrebleu/sacrebleu.py /blob/v-jinhzh/data/wmttest/testdata/${src}${tgt}.${tgt}"
