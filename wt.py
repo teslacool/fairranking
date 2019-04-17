@@ -25,19 +25,21 @@ python -m torch.distributed.launch --nproc_per_node 4  train.py $DATA \
   --lr-scheduler inverse_sqrt --warmup-init-lr 1e-07 --warmup-updates 4000 \
   --lr 0.0005 --min-lr 1e-09 \
   --dropout 0.3 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 \
-  --max-tokens 3084 \
-  --save-dir $SAVE --update-freq 32  --save-interval-updates 100  --seed 121 --ddp-backend=no_c10d
+  --max-tokens 2584 \
+  --save-dir $SAVE --update-freq 48  --save-interval-updates 50  --seed 121 --ddp-backend=no_c10d
 
 '''
 data = sys.argv[1]
-data = os.path.join('/blob/v-jinhzh/data/bt02/alldata', data)
+data = os.path.join('/blob/v-jinhzh/data/bt02/alldata3', data)
 assert os.path.exists(data)
 os.system('ls {}'.format(data))
-save = 'ft_{}'.format(sys.argv[1])
+save = 'ft4_{}'.format(sys.argv[1])
 model = sys.argv[2]
+assert os.path.exists(model)
 newargs = args.format(data=data, save=save, model=model)
 fn = 'phillyscript/train_{save}.sh'.format(save=save)
 print(newargs)
 with io.open(fn, 'w', newline='\n') as tgt:
     tgt.write(newargs)
 os.system('chmod 777 {}'.format(fn))
+print('bash {}'.format(fn))

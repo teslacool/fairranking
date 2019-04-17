@@ -91,8 +91,8 @@ echo ">>> dictdir $dictdir"
 
 if [ $src == ru ]
 then
-    srcfile=$textdir/enru.ru.un.tok.filt
-    tgtfile=$textdir/enru.en.un.tok.filt
+    srcfile=$textdir/enru.ru.noun.tok.filt
+    tgtfile=$textdir/enru.en.noun.tok.filt
 else
     srcfile=$textdir/enru.en.noun.tok.filt
     tgtfile=$textdir/enru.ru.noun.tok.filt
