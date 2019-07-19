@@ -9,8 +9,10 @@ parser.add_argument('path', type=str, )
 parser.add_argument('--data', type=str, default='/blob/v-jinhzh/data/wmt14_en_de_joined_dict_tian')
 parser.add_argument('--bsz', type=int, default=128)
 parser.add_argument('--beam', type=int, default=5)
+parser.add_argument('-s', type=str)
+parser.add_argument('-t', type=str)
 
-config = 'python generate.py {data} --path {path} --batch-size {bsz} --beam {beam}  --remove-bpe --quiet'
+config = 'python generate.py {data} --path {path} --batch-size {bsz} --beam {beam}  --remove-bpe --quiet -s {srclng} -t {tgtlng}'
 tgtfile = 'bleu.logs'
 args = parser.parse_args()
 path = args.path
@@ -18,6 +20,8 @@ data = args.data
 bsz = args.bsz
 beam = args.beam
 tgtfile = os.path.join(path, tgtfile)
+srclng = args.s
+tgtlng = args.t
 def find_all_ckt(path):
     fns = os.listdir(path)
     fn2order = {}
@@ -48,7 +52,7 @@ fns = find_all_ckt(path)
 fns = clean_ckts(fns)
 print(fns)
 for fn in fns:
-    cmd = config.format(data=data, path=os.path.join(path, fn), bsz=bsz, beam=beam)
+    cmd = config.format(data=data, path=os.path.join(path, fn), bsz=bsz, beam=beam, srclng=srclng, tgtlng=tgtlng)
     # print(cmd)
     cmd = '{} > {}'.format(cmd, os.path.join(path, 'infer.logs'))
     print(cmd)
